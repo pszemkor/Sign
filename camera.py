@@ -5,10 +5,9 @@ def get_video():
 
     while (True):
         ret, frame = cam.read()
+        img = cv2.flip(frame, 1)
 
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-        cv2.imshow('frame', gray)
+        cv2.imshow('frame', img)
         key = cv2.waitKey(1)
         # 27 - ESC key
         if key == 27:
@@ -16,6 +15,5 @@ def get_video():
 
     cam.release()
     cv2.destroyAllWindows()
-
 
 get_video()

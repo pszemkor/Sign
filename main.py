@@ -1,5 +1,4 @@
 def run_app():
-    print("test")
     pass
 
 
