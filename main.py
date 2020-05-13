@@ -1,3 +1,6 @@
+from preprocessing import preprocess
+from classifier import classify
+
 def run_app():
     pass
 
