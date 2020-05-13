@@ -1,5 +1,8 @@
 import cv2
 
+from preprocessing import preprocess
+
+
 def get_video():
     cam = cv2.VideoCapture(0)
 
@@ -7,7 +10,8 @@ def get_video():
         ret, frame = cam.read()
         img = cv2.flip(frame, 1)
 
-        cv2.imshow('frame', img)
+        preprocessed_img = preprocess(img)
+        cv2.imshow('frame', preprocessed_img)
         key = cv2.waitKey(1)
         # 27 - ESC key
         if key == 27:
