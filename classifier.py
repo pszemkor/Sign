@@ -1,11 +1,20 @@
+# def classify(img):
+#     pass
 
-
+import keras
 import numpy as np
 import pandas as pd
-
+import cv2
+from matplotlib import pyplot as plt
 from keras.models import Sequential
 from keras.layers import Conv2D,MaxPooling2D, Dense,Flatten, Dropout
-
+from keras.datasets import mnist
+from keras.utils.vis_utils import plot_model
+from keras.utils import np_utils
+from keras.optimizers import SGD
+import matplotlib.pyplot as plt
+import os
+from IPython.display import Image
 
 train = pd.read_csv('sign-language-mnist/sign_mnist_train.csv')
 test = pd.read_csv('sign-language-mnist/sign_mnist_test.csv')
@@ -44,11 +53,10 @@ classifier.compile(optimizer='SGD', loss='categorical_crossentropy', metrics=['a
 classifier.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 classifier.fit(X_train, y_train, epochs=50, batch_size=100)
 accuracy = classifier.evaluate(x=X_test,y=y_test,batch_size=32)
+
 print("Accuracy: ",accuracy[1])
 classifier.summary()
-from keras.utils.vis_utils import plot_model
 plot_model(classifier, to_file='model_plot.png', show_shapes=True, show_layer_names=True)
 plot_model(classifier, show_shapes=True, show_layer_names=True, to_file='model.png')
-from IPython.display import Image
 Image(retina=True, filename='model.png')
 classifier.save('SignCNNModel.h5')
