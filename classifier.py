@@ -38,8 +38,10 @@ y_test = np.array(y_test).reshape(-1)
 y_train = np.eye(num_classes)[y_train]
 y_test = np.eye(num_classes)[y_test]
 
-X_train = X_train.reshape((27455, 28, 28, 1))
-X_test = X_test.reshape((7172, 28, 28, 1))
+shape_train = (27455, 28, 28, 1)
+X_train = X_train.reshape(shape_train)
+shape_test = (7172, 28, 28, 1)
+X_test = X_test.reshape(shape_test)
 classifier = Sequential()
 classifier.add(Conv2D(filters=8, kernel_size=(3,3),strides=(1,1),padding='same',input_shape=(28,28,1),activation='relu', data_format='channels_last'))
 classifier.add(MaxPooling2D(pool_size=(2,2)))
@@ -55,6 +57,7 @@ classifier.fit(X_train, y_train, epochs=50, batch_size=100)
 accuracy = classifier.evaluate(x=X_test,y=y_test,batch_size=32)
 
 print("Accuracy: ",accuracy[1])
+
 classifier.summary()
 plot_model(classifier, to_file='model_plot.png', show_shapes=True, show_layer_names=True)
 plot_model(classifier, show_shapes=True, show_layer_names=True, to_file='model.png')
