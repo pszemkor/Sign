@@ -1,18 +1,11 @@
-# def classify(img):
-#     pass
 
-import keras
+
 import numpy as np
 import pandas as pd
-import cv2
-from matplotlib import pyplot as plt
+
 from keras.models import Sequential
 from keras.layers import Conv2D,MaxPooling2D, Dense,Flatten, Dropout
-from keras.datasets import mnist
-import matplotlib.pyplot as plt
-from keras.utils import np_utils
-from keras.optimizers import SGD
-import os
+
 
 train = pd.read_csv('sign-language-mnist/sign_mnist_train.csv')
 test = pd.read_csv('sign-language-mnist/sign_mnist_test.csv')
