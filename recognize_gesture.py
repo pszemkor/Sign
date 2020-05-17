@@ -95,6 +95,8 @@ def recognize():
             contours = cv2.findContours(thresh.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[1]
         elif openCV_ver == '4':
             contours = cv2.findContours(thresh.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[0]
+        else:
+            raise Exception("Unsupported version of open cv")
         if len(contours) > 0:
             contour = max(contours, key=cv2.contourArea)
             if cv2.contourArea(contour) > 10000:
