@@ -32,7 +32,8 @@ def set_up_log_table(connection):
     connection.execute('''CREATE TABLE IF NOT EXISTS Log
     (ID INTEGER PRIMARY KEY AUTOINCREMENT,
         Date DATE,
-        Text TEXT);''')
+        Text TEXT
+        );''')
 
 
 def set_up_progress_table(connection):
@@ -40,4 +41,5 @@ def set_up_progress_table(connection):
     (ID INTEGER PRIMARY KEY AUTOINCREMENT,
         Date DATE,
         Sign TEXT,
+        Accuracy REAL
         );''')
