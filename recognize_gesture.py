@@ -135,5 +135,11 @@ def show(h, img, text, thresh, w, x, y):
     cv2.imshow("thresh", thresh)
 
 
-keras_predict(model, np.zeros((50, 50), dtype=np.uint8))
-recognize()
+def start_recognizing():
+    keras_predict(model, np.zeros((50, 50), dtype=np.uint8))
+    recognize()
+
+
+start_recognizing()
+
+
