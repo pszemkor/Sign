@@ -43,3 +43,12 @@ def set_up_progress_table(connection):
         Sign TEXT,
         Accuracy REAL
         );''')
+
+
+@with_connection
+def insert_values(connection, table_name, columns, values):
+    values = tuple(values)
+    columns = tuple(columns)
+    command = 'INSERT INTO %s%s values %s ' % (table_name, columns, values)
+    with connection:
+        connection.execute(command)
