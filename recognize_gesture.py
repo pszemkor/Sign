@@ -3,6 +3,8 @@ import numpy as np
 import sqlite3
 from keras.models import load_model
 
+from preprocessing import preprocess
+
 prediction = None
 model = load_model('cnn_model_keras2.h5')
 
@@ -81,20 +83,8 @@ def recognize():
     x, y, w, h = 300, 100, 300, 300
     while True:
         text = ""
-        img, imgHSV = process_img(cam)
-        dst = cv2.calcBackProject([imgHSV], [0, 1], hist, [0, 180, 0, 256], 1)
-        disc = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (10, 10))
-        cv2.filter2D(dst, -1, disc, dst)
-        blur = cv2.GaussianBlur(dst, (11, 11), 0)
-        blur = cv2.medianBlur(blur, 15)
-        thresh = prepare_thresh(blur, h, w, x, y)
-        (openCV_ver, _, __) = cv2.__version__.split(".")
-        if openCV_ver == '3':
-            contours = cv2.findContours(thresh.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[1]
-        elif openCV_ver == '4':
-            contours = cv2.findContours(thresh.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[0]
-        else:
-            raise Exception("Unsupported version of open cv")
+        img, thresh = preprocess(cam, h, hist, w, x, y)
+        contours = resolve_contour_based_on_cv_version(thresh)
         if len(contours) > 0:
             contour = max(contours, key=cv2.contourArea)
             if cv2.contourArea(contour) > 10000:
@@ -117,6 +107,17 @@ def recognize():
             break
 
 
+def resolve_contour_based_on_cv_version(thresh):
+    (openCV_ver, _, __) = cv2.__version__.split(".")
+    if openCV_ver == '3':
+        contours = cv2.findContours(thresh.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[1]
+    elif openCV_ver == '4':
+        contours = cv2.findContours(thresh.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[0]
+    else:
+        raise Exception("Unsupported version of open cv")
+    return contours
+
+
 def create_cam_obj():
     cam = cv2.VideoCapture(1)
     if cam.read()[0] == False:
@@ -134,21 +135,11 @@ def show(h, img, text, thresh, w, x, y):
     cv2.imshow("thresh", thresh)
 
 
-def process_img(cam):
-    img = cam.read()[1]
-    img = cv2.flip(img, 1)
-    img = cv2.resize(img, (640, 480))
-    imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    return img, imgHSV
+def start_recognizing():
+    keras_predict(model, np.zeros((50, 50), dtype=np.uint8))
+    recognize()
 
 
-def prepare_thresh(blur, h, w, x, y):
-    thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
-    thresh = cv2.merge((thresh, thresh, thresh))
-    thresh = cv2.cvtColor(thresh, cv2.COLOR_BGR2GRAY)
-    thresh = thresh[y:y + h, x:x + w]
-    return thresh
+start_recognizing()
 
 
-keras_predict(model, np.zeros((50, 50), dtype=np.uint8))
-recognize()
