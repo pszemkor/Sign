@@ -1,11 +1,11 @@
 import sqlite3
-
+import datetime
 
 def with_connection(func):
-
     def with_connection_(*args, **kwargs):
         database_path = 'sign.db'
         connection = None
+        res = None
         try:
             connection = sqlite3.connect(database_path)
             res = func(connection, *args, **kwargs)
@@ -52,3 +52,7 @@ def insert_values(connection, table_name, columns, values):
     command = 'INSERT INTO %s%s values %s ' % (table_name, columns, values)
     with connection:
         connection.execute(command)
+
+set_up_database_tables()
+insert_values(table_name='Log',
+              columns=['Date', 'Text'], values=[datetime.date.today(), "this is test"])
