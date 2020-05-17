@@ -20,4 +20,4 @@ def get_video():
     cam.release()
     cv2.destroyAllWindows()
 
-get_video()
+# get_video()
