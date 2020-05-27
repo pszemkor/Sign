@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import {LetterService} from '../services/letter.service'
+import { Letter } from '../shared/letter';
 @Component({
   selector: 'app-trainer',
   templateUrl: './trainer.component.html',
   styleUrls: ['./trainer.component.scss']
 })
 export class TrainerComponent implements OnInit {
-  private currentLetter: string = 'A';
+  currentLetter: string = "X";
   
   constructor(private letterService: LetterService) { 
   }
 
   ngOnInit(): void {
     this.letterService.getLetterToRecognize()
-    .subscribe(current => this.currentLetter = current)
+    .subscribe(current => this.currentLetter = current["letter"])
   }
 
   onStart(){
-    console.log(this.currentLetter);
+    this.letterService.getLetterToRecognize()
+    .subscribe(current => {console.log(current["letter"]);this.currentLetter = current["letter"]});
   }
 
 

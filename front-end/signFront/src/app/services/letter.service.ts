@@ -3,6 +3,7 @@ import {baseURL} from '../shared/base'
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Letter } from '../shared/letter';
 
 @Injectable({
   providedIn: 'root'

@@ -43,7 +43,7 @@ def check():
 @app.route('/currentletter', methods=['GET'])
 @cross_origin()
 def get_letter():
-    return LETTER_TO_BE_SHOWN
+    return jsonify({"letter": LETTER_TO_BE_SHOWN})
 
 
 @app.route('/skip', methods=['POST'])
