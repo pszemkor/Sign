@@ -45,7 +45,7 @@ def get_letter():
 def skip():
     global ATTEMPTS_COUNT
     last_letter = rs.last_letter()
-    # todo save attempts to database
+    insert_progress([datetime.today(), LETTER_TO_BE_SHOWN, ATTEMPTS_COUNT, 0])
     ATTEMPTS_COUNT = 0
     set_random_letter()
     return jsonify({"success": False, "last_letter": last_letter})
