@@ -73,6 +73,6 @@ def insert_progress(connection, values):
 
 
 set_up_database_tables()
-# d = date.today()
-# insert_log([d, "this is test"])
-# insert_progress([d, "T", 0.4])
+d = date.today()
+insert_log([d, "this is test"])
+insert_progress([d, "T", 0.4])
