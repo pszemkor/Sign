@@ -11,10 +11,14 @@ rs = RecognitionService()
 
 @app.route('/check', methods=['GET'])
 def check():
+    global ATTEMPTS_COUNT
     last_letter = rs.last_letter()
     if LETTER_TO_BE_SHOWN == last_letter:
+        # todo save attempts count to database
+        ATTEMPTS_COUNT = 0
         return jsonify({"success": True, "last_letter": last_letter})
     else:
+        ATTEMPTS_COUNT += 1
         return jsonify({"success": False, "last_letter": last_letter})
 
 
