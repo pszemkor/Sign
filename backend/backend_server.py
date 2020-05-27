@@ -16,7 +16,7 @@ def check():
     global ATTEMPTS_COUNT
     last_letter = rs.last_letter()
     if LETTER_TO_BE_SHOWN == last_letter:
-        # todo save attempts count to database
+        insert_progress([datetime.today(), LETTER_TO_BE_SHOWN, ATTEMPTS_COUNT, 1])
         ATTEMPTS_COUNT = 0
         return jsonify({"success": True, "last_letter": last_letter})
     else:
