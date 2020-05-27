@@ -5,7 +5,10 @@
     <h1 class="bigLetter">{{currentLetter}}</h1>
 </div>
 
+
 <div class="merginTop" fxLayout="row" fxLayoutGap="50px">
-    <button class="buttonClass center" mat-raised-button color="primary" (click)="onStart()">Start</button>
+    <!-- <button class="buttonClass center" mat-raised-button color="primary" (click)="onStart()">Start</button> -->
     <button class="buttonClass center" mat-raised-button color="primary" (click)="onSkip()">Skip letter</button>
 </div>
+
+<h1 *ngIf="printSuccess" class="bigLetter">Success!</h1>

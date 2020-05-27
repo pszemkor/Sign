@@ -19,4 +19,8 @@ export class LetterService {
     return this.http.get<Result>(baseURL + "check");
   }
 
+  skipLetter(): Observable<Result> {
+    return this.http.post<Result>(baseURL + "skip", null)
+  }
+
 }
