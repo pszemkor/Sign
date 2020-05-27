@@ -8,8 +8,8 @@ import { Letter } from '../shared/letter';
 })
 export class TrainerComponent implements OnInit {
   currentLetter: string = "X";
-  
-  constructor(private letterService: LetterService) { 
+
+  constructor(private letterService: LetterService) {
   }
 
   ngOnInit(): void {
