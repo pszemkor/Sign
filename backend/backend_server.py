@@ -1,5 +1,7 @@
 from flask import Flask, jsonify
 
+from database.database import insert_progress
+from datetime import datetime
 from backend.recognition_service import RecognitionService
 
 app = Flask(__name__)
