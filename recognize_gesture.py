@@ -6,11 +6,10 @@ from keras.models import load_model
 from preprocessing import preprocess
 
 prediction = None
-model = load_model('cnn_model_keras2.h5')
 
 
 def get_image_size():
-    img = cv2.imread('gestures/0/100.jpg', 0)
+    img = cv2.imread('../gestures/0/100.jpg', 0)
     return img.shape
 
 
@@ -87,7 +86,7 @@ def recognize():
         contours = resolve_contour_based_on_cv_version(thresh)
         if len(contours) > 0:
             contour = max(contours, key=cv2.contourArea)
-            if cv2.contourArea(contour) > 10000:
+            if cv2.contourArea(contour) > 1000:
                 x1, y1, w1, h1 = cv2.boundingRect(contour)
                 save_img = thresh[y1:y1 + h1, x1:x1 + w1]
                 if w1 > h1:
@@ -99,7 +98,7 @@ def recognize():
 
                 pred_probab, pred_class = keras_predict(model, save_img)
 
-                if pred_probab * 100 > 80:
+                if pred_probab * 100 > 50:
                     text = get_pred_text_from_db(pred_class)
                     print(text)
         show(h, img, text, thresh, w, x, y)
@@ -126,20 +125,16 @@ def create_cam_obj():
 
 
 def show(h, img, text, thresh, w, x, y):
-    blackboard = np.zeros((480, 640, 3), dtype=np.uint8)
-    splitted_text = split_sentence(text, 2)
-    put_splitted_text_in_blackboard(blackboard, splitted_text)
-    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    res = np.hstack((img, blackboard))
-    cv2.imshow("Recognizing gesture", res)
+    #blackboard = np.zeros((480, 640, 3), dtype=np.uint8)
+    #splitted_text = split_sentence(text, 2)
+    #put_splitted_text_in_blackboard(blackboard, splitted_text)
+    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 255), 2)
+    # res = np.hstack((img, blackboard))
+    cv2.imshow("Recognizing gesture", img)
     cv2.imshow("thresh", thresh)
 
 
 def start_recognizing():
-    keras_predict(model, np.zeros((50, 50), dtype=np.uint8))
     recognize()
-
-
-start_recognizing()
 
 
