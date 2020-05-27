@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LetterServiceService } from './letter-service.service';
+import { LetterService } from './letter.service';
 
-describe('LetterServiceService', () => {
-  let service: LetterServiceService;
+describe('LetterService', () => {
+  let service: LetterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LetterServiceService);
+    service = TestBed.inject(LetterService);
   });
 
   it('should be created', () => {

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LetterServiceService {
+export class LetterService {
 
   constructor() { }
 }
