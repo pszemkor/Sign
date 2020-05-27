@@ -4,6 +4,7 @@ from backend.recognition_service import RecognitionService
 
 app = Flask(__name__)
 
+ATTEMPTS_COUNT = 0
 LETTER_TO_BE_SHOWN = "A"
 rs = RecognitionService()
 
