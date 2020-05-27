@@ -34,10 +34,10 @@ def check():
         insert_progress([datetime.today(), LETTER_TO_BE_SHOWN, ATTEMPTS_COUNT, 1])
         ATTEMPTS_COUNT = 0
         set_random_letter()
-        return jsonify({"success": True, "last_letter": last_letter})
+        return jsonify({"success": True, "last_letter": last_letter, "new_letter": LETTER_TO_BE_SHOWN})
     else:
         ATTEMPTS_COUNT += 1
-        return jsonify({"success": False, "last_letter": last_letter})
+        return jsonify({"success": False, "last_letter": last_letter, "new_letter": None})
 
 
 @app.route('/currentletter', methods=['GET'])
@@ -54,7 +54,7 @@ def skip():
     insert_progress([datetime.today(), LETTER_TO_BE_SHOWN, ATTEMPTS_COUNT, 0])
     ATTEMPTS_COUNT = 0
     set_random_letter()
-    return jsonify({"success": False, "last_letter": last_letter})
+    return jsonify({"success": False, "last_letter": last_letter, "new_letter": LETTER_TO_BE_SHOWN})
 
 
 if __name__ == '__main__':
