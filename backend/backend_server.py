@@ -46,7 +46,7 @@ def get_letter():
     return LETTER_TO_BE_SHOWN
 
 
-@app.route('/skip', methods=['GET'])
+@app.route('/skip', methods=['POST'])
 @cross_origin()
 def skip():
     global ATTEMPTS_COUNT
