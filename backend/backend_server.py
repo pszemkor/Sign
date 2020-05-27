@@ -43,7 +43,12 @@ def get_letter():
 
 @app.route('/skip', methods=['POST'])
 def skip():
-    pass
+    global ATTEMPTS_COUNT
+    last_letter = rs.last_letter()
+    # todo save attempts to database
+    ATTEMPTS_COUNT = 0
+    set_random_letter()
+    return jsonify({"success": False, "last_letter": last_letter})
 
 
 if __name__ == '__main__':
