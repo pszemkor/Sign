@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 import string
 import random
@@ -9,7 +9,8 @@ from datetime import datetime
 from backend.recognition_service import RecognitionService
 
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 ATTEMPTS_COUNT = 0
 LETTER_TO_BE_SHOWN = "A"
@@ -25,6 +26,7 @@ def set_random_letter():
 
 
 @app.route('/check', methods=['GET'])
+@cross_origin()
 def check():
     global ATTEMPTS_COUNT
     last_letter = rs.last_letter()
@@ -39,11 +41,13 @@ def check():
 
 
 @app.route('/currentletter', methods=['GET'])
+@cross_origin()
 def get_letter():
     return LETTER_TO_BE_SHOWN
 
 
 @app.route('/skip', methods=['POST'])
+@cross_origin()
 def skip():
     global ATTEMPTS_COUNT
     last_letter = rs.last_letter()
