@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 import string
 import random
@@ -8,6 +9,7 @@ from datetime import datetime
 from backend.recognition_service import RecognitionService
 
 app = Flask(__name__)
+CORS(app)
 
 ATTEMPTS_COUNT = 0
 LETTER_TO_BE_SHOWN = "A"
