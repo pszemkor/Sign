@@ -9,6 +9,8 @@ import { TrainerComponent } from './trainer/trainer.component';
 import { MatButtonModule } from '@angular/material/button';
 import {baseURL} from './shared/base'
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     NoopAnimationsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   providers: [{ provide: 'BaseURL', useValue: baseURL }],
   bootstrap: [AppComponent]

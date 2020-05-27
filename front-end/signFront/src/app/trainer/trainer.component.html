@@ -1,2 +1,11 @@
-<button mat-raised-button color="primary" (click)="onStart()">Start</button>
-<p>{{currentLetter}}</p>
+<div fxLayout="row" fxLayoutGap="100px">
+    <div class="left">
+        <img src="assets/images/language.jpg" alt="image" width="600" height="500">
+    </div>
+    <h1 class="bigLetter">{{currentLetter}}</h1>
+</div>
+
+<div class="merginTop" fxLayout="row" fxLayoutGap="50px">
+    <button class="buttonClass center" mat-raised-button color="primary" (click)="onStart()">Start</button>
+    <button class="buttonClass center" mat-raised-button color="primary" (click)="onSkip()">Skip letter</button>
+</div>

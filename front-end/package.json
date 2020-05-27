@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.5.4"
+  },
+  "dependencies": {
+    "@angular/flex-layout": "^9.0.0-beta.31"
   }
 }

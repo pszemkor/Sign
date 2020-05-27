@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {baseURL} from '../shared/base'
-import { Observable, of } from 'rxjs';
+import { baseURL } from '../shared/base'
+import { Observable, of, interval } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Letter } from '../shared/letter';
+import { Result } from '../shared/result';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ export class LetterService {
 
   getLetterToRecognize(): Observable<string> {
     return this.http.get<string>(baseURL + "currentletter");
+  }
+
+  checkIfSuccess(): Observable<Result> {
+    return this.http.get<Result>(baseURL + "check");
   }
 
 }
