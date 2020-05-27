@@ -22,4 +22,5 @@ def skip():
 
 
 if __name__ == '__main__':
+    # run camera service
     app.run()
