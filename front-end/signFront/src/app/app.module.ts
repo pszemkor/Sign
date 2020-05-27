@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TrainerComponent } from './trainer/trainer.component';
-
+import { MatButtonModule } from '@angular/material/button';
+import {baseURL} from './shared/base'
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +18,11 @@ import { TrainerComponent } from './trainer/trainer.component';
     BrowserModule,
     AppRoutingModule,
     MatToolbarModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatButtonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: 'BaseURL', useValue: baseURL }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
