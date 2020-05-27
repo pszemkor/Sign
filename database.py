@@ -1,5 +1,4 @@
 import sqlite3
-from datetime import datetime
 
 
 def with_connection(func):
@@ -21,7 +20,7 @@ def with_connection(func):
 
 
 @with_connection
-def set_up_database_tables(connection):
+def set_up_database(connection):
     with connection:
         connection.execute("PRAGMA foreign_keys = 1")
 
@@ -54,9 +53,3 @@ def insert_progress(connection, values):
     command = 'INSERT INTO Progress ("Date", Sign, TryCount, Success) values (?, ?, ?, ?)'
     with connection:
         connection.execute(command, values)
-
-
-set_up_database_tables()
-# d = datetime.today()
-# insert_log([d, "this is test"])
-# insert_progress([d, "T", 0.4])
