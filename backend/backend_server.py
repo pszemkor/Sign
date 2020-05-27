@@ -1,12 +1,24 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+LETTER_TO_BE_SHOWN = "A"
 
-@app.route('/', methods=['GET'])
-@app.route('/index.html', methods=['GET'])
-def my_form():
-    return render_template('index.html')
+
+@app.route('/check', methods=['GET'])
+def check():
+    pass
+    # check if success, return JSON
+
+
+@app.route('/letter', methods=['GET'])
+def get_letter():
+    return LETTER_TO_BE_SHOWN
+
+
+@app.route('/skip', methods=['POST'])
+def skip():
+    pass
 
 
 if __name__ == '__main__':
