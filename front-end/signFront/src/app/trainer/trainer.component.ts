@@ -6,7 +6,7 @@ import {LetterService} from '../services/letter.service'
   styleUrls: ['./trainer.component.scss']
 })
 export class TrainerComponent implements OnInit {
-  private currentLetter: string;
+  private currentLetter: string = 'A';
   
   constructor(private letterService: LetterService) { 
   }
@@ -15,5 +15,10 @@ export class TrainerComponent implements OnInit {
     this.letterService.getLetterToRecognize()
     .subscribe(current => this.currentLetter = current)
   }
+
+  onStart(){
+    console.log(this.currentLetter);
+  }
+
 
 }
