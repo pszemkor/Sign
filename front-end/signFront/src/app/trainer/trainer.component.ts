@@ -17,7 +17,7 @@ export class TrainerComponent implements OnInit {
   ngOnInit(): void {
     this.letterService.getLetterToRecognize()
       .subscribe(current => this.currentLetter = current["letter"])
-      interval(10)
+      interval(200)
       .subscribe(x => this.letterService.checkIfSuccess()
         .subscribe(res => {
           this.result = res;
