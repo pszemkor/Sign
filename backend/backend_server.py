@@ -17,7 +17,7 @@ def check():
         return jsonify({"success": False, "last_letter": last_letter})
 
 
-@app.route('/letter', methods=['GET'])
+@app.route('/currentletter', methods=['GET'])
 def get_letter():
     return LETTER_TO_BE_SHOWN
 
@@ -28,6 +28,5 @@ def skip():
 
 
 if __name__ == '__main__':
-    # run camera service
     rs.run()
     app.run()
