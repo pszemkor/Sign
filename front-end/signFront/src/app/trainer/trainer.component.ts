@@ -8,9 +8,12 @@ import {LetterService} from '../services/letter.service'
 export class TrainerComponent implements OnInit {
   private currentLetter: string;
   
-  constructor(private letterService: LetterService) { }
+  constructor(private letterService: LetterService) { 
+  }
 
   ngOnInit(): void {
+    this.letterService.getLetterToRecognize()
+    .subscribe(current => this.currentLetter = current)
   }
 
 }
