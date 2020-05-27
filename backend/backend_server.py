@@ -1,10 +1,12 @@
+from threading import Thread
+
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 
 import string
 import random
 
-from database.database import insert_progress
+from database.database import insert_progress, set_up_database
 from datetime import datetime
 from backend.recognition_service import RecognitionService
 
@@ -58,5 +60,7 @@ def skip():
 
 
 if __name__ == '__main__':
+    set_up_database()
+    thread = Thread(target=app.run)
+    thread.start()
     rs.run()
-    app.run()
