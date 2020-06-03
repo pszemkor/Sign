@@ -1,5 +1,5 @@
 import sqlite3
-
+from datetime import datetime
 
 def with_connection(func):
     def with_connection_(*args, **kwargs):
@@ -53,3 +53,28 @@ def insert_progress(connection, values):
     command = 'INSERT INTO Progress ("Date", Sign, TryCount, Success) values (?, ?, ?, ?)'
     with connection:
         connection.execute(command, values)
+
+
+@with_connection
+def get_progress_table(connection):
+    c = connection.cursor()
+    c.execute("SELECT * FROM Progress")
+    return c.fetchall()
+
+
+def get_data():
+    data = get_progress_table()
+    result = []
+    for item in data:
+        (id, date, sign, count, success) = item
+        d = {
+            'id': id,
+            'date': date,
+            'sign': sign,
+            'count': count,
+            'success': success
+        }
+        result.append(d)
+
+    return result
+
