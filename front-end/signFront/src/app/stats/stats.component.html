@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutGap="100px">
+    <mat-card *ngIf="stats" class="container" fxFlex>
+        <mat-list>
+            <mat-list-item>
+                <h1>Stats:</h1>
+            </mat-list-item>
+           <!-- {{stats | json}} -->
+            <mat-list-item *ngFor="let stat of stats">
+                <li>
+                    <b>{{stat.sign }}</b>
+                    <span style="padding-left: 1em">{{" success: " + stat.success + " failures: " + stat.failures}}</span>
+                </li>
+
+
+            </mat-list-item>
+        </mat-list>
+    </mat-card>
+
+</div>
