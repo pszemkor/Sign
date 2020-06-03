@@ -58,7 +58,7 @@ def insert_progress(connection, values):
 @with_connection
 def get_progress_table(connection):
     c = connection.cursor()
-    c.execute("SELECT * FROM Progress")
+    c.execute("SELECT * FROM Progress ORDER BY Date DESC LIMIT 100")
     return c.fetchall()
 
 
@@ -77,4 +77,3 @@ def get_data():
         result.append(d)
 
     return result
-
