@@ -12,7 +12,7 @@ export class SessionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.sessionService.getSessions()
-      .subscribe(data => this.sessions = data)
+      .subscribe(data => {console.log(data); this.sessions = data['data'];})
   }
 
 
