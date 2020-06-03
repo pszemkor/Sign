@@ -1,5 +1,19 @@
 <div fxLayout="row" fxLayoutGap="100px">
-    <mat-list *ngIf="sessions">
-        <mat-list-item *ngFor="let session of sessions"> {{session | json}} </mat-list-item>
-    </mat-list>
+    <mat-card *ngIf="sessions" class="container" fxFlex>
+        <mat-list>
+            <mat-list-item>
+                <h1>Sessions:</h1>
+            </mat-list-item>
+            <!-- {{sessions | json}} -->
+            <mat-list-item *ngFor="let session of sessions">
+                <li>
+                    <b>{{session.sign }}</b>
+                    <span style="padding-left: 1em">{{" success: " + session.success + " time: " + session.date}}</span>
+                </li>
+
+
+            </mat-list-item>
+        </mat-list>
+    </mat-card>
+
 </div>

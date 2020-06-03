@@ -44,7 +44,7 @@ def check():
 
 @app.route('/currentletter', methods=['GET'])
 @cross_origin()
-def get_letter():
+def get_stats():
     return jsonify({"letter": LETTER_TO_BE_SHOWN})
 
 

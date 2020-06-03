@@ -15,7 +15,7 @@ model = load_model('cnn_model_keras2.h5')
 class RecognitionService():
     def __init__(self):
         super().__init__()
-        self.recognized_letters = ['' for i in range(0, 20)]
+        self.recognized_letters = ['$' for i in range(0, 20)]
 
     def run(self):
         cam = create_cam_obj()
@@ -54,5 +54,7 @@ class RecognitionService():
         for letter in string.ascii_letters.upper():
             letters_count[letter] = 0
         for letter in self.recognized_letters:
+            if letter not in string.ascii_letters.upper():
+                continue
             letters_count[letter] += 1
         return max(letters_count.items(), key=operator.itemgetter(1))[0]

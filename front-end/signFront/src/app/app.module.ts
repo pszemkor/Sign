@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SessionsComponent } from './sessions/sessions.component';
 import { HeaderComponent } from './header/header.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HeaderComponent } from './header/header.component';
     HttpClientModule,
     FlexLayoutModule,
     MatListModule,
-    RouterModule
+    RouterModule,
+    MatCardModule
   ],
   providers: [{ provide: 'BaseURL', useValue: baseURL }],
   bootstrap: [AppComponent]

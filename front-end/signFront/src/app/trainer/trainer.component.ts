@@ -8,7 +8,7 @@ import { Result } from '../shared/result';
   styleUrls: ['./trainer.component.scss']
 })
 export class TrainerComponent implements OnInit {
-  currentLetter: string = "X";
+  currentLetter: string;
   result: Result;
   printSuccess: boolean;
   constructor(private letterService: LetterService) {
