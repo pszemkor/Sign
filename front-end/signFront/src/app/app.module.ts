@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing/app-routing.module'
 import { AppComponent } from './app.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -29,7 +29,8 @@ import { HeaderComponent } from './header/header.component';
     MatButtonModule,
     HttpClientModule,
     FlexLayoutModule,
-    MatListModule
+    MatListModule,
+    RouterModule
   ],
   providers: [{ provide: 'BaseURL', useValue: baseURL }],
   bootstrap: [AppComponent]
