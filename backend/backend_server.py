@@ -6,7 +6,7 @@ from flask_cors import CORS, cross_origin
 import string
 import random
 
-from database.database import insert_progress, set_up_database, get_data
+from database.database import insert_progress, set_up_database, get_data, get_stats_data
 from datetime import datetime
 from backend.recognition_service import RecognitionService
 
@@ -63,6 +63,13 @@ def skip():
 @cross_origin()
 def get_letter():
     data = get_data()
+    return jsonify({"data": data})
+
+
+@app.route('/stats', methods=['GET'])
+@cross_origin()
+def get_stats_things():
+    data = get_stats_data()
     return jsonify({"data": data})
 
 
