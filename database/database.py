@@ -61,6 +61,21 @@ def get_progress_table(connection):
     c.execute("SELECT * FROM Progress ORDER BY Date DESC LIMIT 100")
     return c.fetchall()
 
+@with_connection
+def get_stats_progress_table(connection):
+    c = connection.cursor()
+    query = """select Sign,
+      (select count(*)
+       from Progress as p1
+       where p.Sign =p1.Sign and p1.Success=1 )as Successes,
+      (select count(*)
+       from Progress as p2
+       where p.Sign =p2.Sign and p2.Success=0 )  as Failures
+    from Progress as p
+    group by Sign;"""
+    c.execute(query)
+    return c.fetchall()
+
 
 def get_data():
     data = get_progress_table()
@@ -77,3 +92,4 @@ def get_data():
         result.append(d)
 
     return result
+
