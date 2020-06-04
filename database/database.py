@@ -93,3 +93,15 @@ def get_data():
 
     return result
 
+def get_stats_data():
+    data = get_stats_progress_table()
+    result = []
+    for item in data:
+        (sign, successes,failures) = item
+        d = {
+            'sign': sign,
+            'successes': successes,
+            'failures': failures
+        }
+        result.append(d)
+    return result
