@@ -98,7 +98,7 @@ def recognize():
 
                 pred_probab, pred_class = keras_predict(model, save_img)
 
-                if pred_probab * 100 > 50:
+                if pred_probab * 100 > 40:
                     text = get_pred_text_from_db(pred_class)
                     print(text)
         show(h, img, text, thresh, w, x, y)
