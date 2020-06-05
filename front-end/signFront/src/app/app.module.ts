@@ -14,12 +14,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SessionsComponent } from './sessions/sessions.component';
 import { HeaderComponent } from './header/header.component';
 import {MatCardModule} from '@angular/material/card';
+import {StatsComponent} from './stats/stats.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrainerComponent,
     SessionsComponent,
+    StatsComponent,
     HeaderComponent
   ],
   imports: [

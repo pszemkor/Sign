@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "signFront"
+  "defaultProject": "signFront",
+  "cli": {
+    "analytics": false
+  }
 }
