@@ -15,15 +15,42 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 ATTEMPTS_COUNT = 0
+
+MINIMAL_TOTAL_ATTEMPTS = 10
+MINIMAL_RATIO = 0.7
+
 LETTER_TO_BE_SHOWN = "A"
 rs = RecognitionService()
 
 
 def set_random_letter():
     global LETTER_TO_BE_SHOWN
-    random_letter = random.choice(string.ascii_letters.upper())
+
+    stats = get_stats_data()
+    alphabet_set = set(string.ascii_uppercase)
+
+    for entry in stats:
+        entry['total'] = entry['successes'] + entry['failures']
+        entry['ratio'] = 0 if entry['total'] == 0 else entry['successes'] / entry['total']
+        alphabet_set.remove(entry['sign'])
+
+    for letter in alphabet_set:
+        letter_stats = {'sign': letter, 'successes': 0, 'failures': 0, 'total': 0, 'ratio': 0}
+        stats.append(letter_stats)
+
+    remaining_letters = []
+    for entry in stats:
+        if entry['total'] < MINIMAL_TOTAL_ATTEMPTS or entry['ratio'] < MINIMAL_RATIO:
+            remaining_letters.append(entry['sign'])
+
+    if not remaining_letters:
+        remaining_letters = list(string.ascii_uppercase)
+
+    print('remaining letters', remaining_letters)
+
+    random_letter = random.choice(remaining_letters)
     while random_letter == LETTER_TO_BE_SHOWN:
-        random_letter = random.choice(string.ascii_letters.upper())
+        random_letter = random.choice(remaining_letters)
     LETTER_TO_BE_SHOWN = random_letter
 
 
