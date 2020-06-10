@@ -113,3 +113,4 @@ def get_stats_data():
 @with_connection
 def delete_stats_data(connection):
     connection.execute("""DELETE FROM Progress;""")
+    connection.commit()
