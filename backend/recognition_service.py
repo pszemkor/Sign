@@ -4,9 +4,9 @@ import string
 import cv2
 from keras.engine.saving import load_model
 
-from recognize_gesture import create_cam_obj, get_hand_hist, resolve_contour_based_on_cv_version, keras_predict, \
+from backend.recognize_gesture import create_cam_obj, get_hand_hist, resolve_contour_based_on_cv_version, keras_predict, \
     get_pred_text_from_db, show
-from preprocessing import preprocess
+from backend.preprocessing import preprocess
 
 
 model = load_model('cnn_model_keras2.h5')
@@ -46,8 +46,6 @@ class RecognitionService():
                             self.recognized_letters.pop(0)
                             print(text)
             show(h, img, text, thresh, w, x, y)
-            if cv2.waitKey(1) == ord('q'):
-                break
 
     def last_letter(self):
         letters_count = {}
