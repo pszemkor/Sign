@@ -1,6 +1,7 @@
 import sqlite3
 from datetime import datetime
 
+
 def with_connection(func):
     def with_connection_(*args, **kwargs):
         database_path = 'sign.db'
@@ -61,6 +62,7 @@ def get_progress_table(connection):
     c.execute("SELECT * FROM Progress ORDER BY Date DESC LIMIT 100")
     return c.fetchall()
 
+
 @with_connection
 def get_stats_progress_table(connection):
     c = connection.cursor()
@@ -93,11 +95,12 @@ def get_data():
 
     return result
 
+
 def get_stats_data():
     data = get_stats_progress_table()
     result = []
     for item in data:
-        (sign, successes,failures) = item
+        (sign, successes, failures) = item
         d = {
             'sign': sign,
             'successes': successes,
@@ -105,3 +108,8 @@ def get_stats_data():
         }
         result.append(d)
     return result
+
+
+@with_connection
+def delete_stats_data(connection):
+    connection.execute("""DELETE FROM Progress;""")
