@@ -14,5 +14,4 @@ export class StatsService{
     return this.http.get<Stats[]>(baseURL + "stats");
   }
 
-
 }

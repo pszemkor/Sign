@@ -14,5 +14,7 @@ export class SessionsService {
     return this.http.get<Session[]>(baseURL + "sessions");
   }
 
-
+  resetSessions(): Observable<string> {
+    return this.http.post<string>(baseURL + "/reset", "");
+  }
 }

@@ -1,5 +1,5 @@
 import sqlite3
-from datetime import datetime
+
 
 
 def with_connection(func):
@@ -23,8 +23,6 @@ def with_connection(func):
 @with_connection
 def set_up_database(connection):
     with connection:
-        connection.execute("PRAGMA foreign_keys = 1")
-
         set_up_progress_table(connection)
 
 
@@ -66,15 +64,15 @@ def get_progress_table(connection):
 @with_connection
 def get_stats_progress_table(connection):
     c = connection.cursor()
-    query = """select Sign,
+    query = '''select Sign,
       (select count(*)
        from Progress as p1
-       where p.Sign =p1.Sign and p1.Success=1 )as Successes,
+       where p.Sign =p1.Sign and p1.Success=1) as Successes,
       (select count(*)
        from Progress as p2
-       where p.Sign =p2.Sign and p2.Success=0 )  as Failures
+       where p.Sign =p2.Sign and p2.Success=0) as Failures
     from Progress as p
-    group by Sign;"""
+    group by Sign;'''
     c.execute(query)
     return c.fetchall()
 
