@@ -6,16 +6,17 @@
 
         <div fxLayout="row" fxLayoutGap="100px" fxLayout.xs="column">
             <div class="left">
-                <img src="assets/images/language.jpg" alt="image" width="500" height="400">
+                <img src="assets/images/language.jpg" alt="language" width="500" height="400">
             </div>
             <div class="left">
-                <img src="assets/images/letters/{{currentLetter}}.png" alt="image" width="500" height="400">
+                <img src="assets/images/letters/{{currentLetter}}.png" alt="current letter" width="500" height="400">
             </div>
         </div>
+        <h1 *ngIf="printSuccess" class="bigLetter">Success!</h1>
         <div>
-            <h1 *ngIf="printSuccess" class="bigLetter">Success!</h1>
             <div class="merginTop" fxLayout="row" fxLayoutGap="50px">
                 <button class="buttonClass center" mat-raised-button color="primary" (click)="onSkip()">Skip letter</button>
+                <button class="buttonClass center" mat-raised-button color="primary" (click)="onReset()">Reset</button>
             </div>
         </div>
 
