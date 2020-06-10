@@ -15,7 +15,7 @@ model = load_model('cnn_model_keras2.h5')
 class RecognitionService():
     def __init__(self):
         super().__init__()
-        self.recognized_letters = ['$' for i in range(0, 20)]
+        self.recognized_letters = ['$' for i in range(0, 1)]
 
     def run(self):
         cam = create_cam_obj()
@@ -27,7 +27,7 @@ class RecognitionService():
             contours = resolve_contour_based_on_cv_version(thresh)
             if len(contours) > 0:
                 contour = max(contours, key=cv2.contourArea)
-                if cv2.contourArea(contour) > 2000:
+                if cv2.contourArea(contour) > 500:
                     x1, y1, w1, h1 = cv2.boundingRect(contour)
                     save_img = thresh[y1:y1 + h1, x1:x1 + w1]
                     if w1 > h1:
