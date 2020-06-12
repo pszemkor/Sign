@@ -46,6 +46,8 @@ class RecognitionService():
                             self.recognized_letters.pop(0)
                             print(text)
             show(h, img, text, thresh, w, x, y)
+            if cv2.waitKey(1) == ord('q'):
+                break
 
     def last_letter(self):
         letters_count = {}
