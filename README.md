@@ -11,16 +11,16 @@ First of all, make sure that you have installed node.js and python interpreter (
 3. cd frontend 
 4. npm install (install frontend's dependencies)
 5. ng serve (run Angular server)
+ 
+## Presentation
+ ![image](https://user-images.githubusercontent.com/37248877/94340939-0e9e6f00-0006-11eb-9c5b-fef9cb54ab47.png)
 
 ## Technology stack
   * Keras
   * OpenCV 2
   * Angular
   * Flask
- 
-## Presentation
- ![image](https://user-images.githubusercontent.com/37248877/94340939-0e9e6f00-0006-11eb-9c5b-fef9cb54ab47.png)
-
+  
 ## Documentation
   Currently, the documentation is available only in polish.
  - [Sign dokumentacja](docs-pl/Sign%20-%20dokumentacja.pdf)
