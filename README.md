@@ -30,4 +30,7 @@ First of all, make sure that you have installed node.js and python interpreter (
   Currently, the documentation is available only in polish.
  - [Sign dokumentacja](docs-pl/Sign%20-%20dokumentacja.pdf)
  
+## Data set
+https://www.kaggle.com/grassknoted/asl-alphabet
+ 
 
