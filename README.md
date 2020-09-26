@@ -13,7 +13,12 @@ First of all, make sure that you have installed node.js and python interpreter (
 5. ng serve (run Angular server)
  
 ## Presentation
+  ### Main view
  ![image](https://user-images.githubusercontent.com/37248877/94340939-0e9e6f00-0006-11eb-9c5b-fef9cb54ab47.png)
+  ### Statistics
+ ![image](https://user-images.githubusercontent.com/37248877/94341167-a51f6000-0007-11eb-84b8-030c4fe6cf24.png)
+  ### Sessions
+![image](https://user-images.githubusercontent.com/37248877/94341183-c5e7b580-0007-11eb-9992-6735f6a9a815.png)
 
 ## Technology stack
   * Keras
