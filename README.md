@@ -5,12 +5,12 @@
 
 ## Getting started
 First of all, make sure that you have installed node.js and python interpreter (version 3.6 +).
-0. Go to the project's directory.
-1. pip install -r requirements.txt (install backend's dependencies)
-2. python3 backend_server.py (run Flask server)
-3. cd frontend 
-4. npm install (install frontend's dependencies)
-5. ng serve (run Angular server)
+1. Go to the project's directory.
+2. pip install -r requirements.txt (install backend's dependencies)
+3. python3 backend_server.py (run Flask server)
+4. cd frontend 
+5. npm install (install frontend's dependencies)
+6. ng serve (run Angular server)
  
 ## Presentation
   ### Main view
