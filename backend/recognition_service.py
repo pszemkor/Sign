@@ -2,16 +2,13 @@ import operator
 import string
 
 import cv2
-from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 
+from backend.preprocessing import preprocess
 from backend.recognize_gesture import create_cam_obj, get_hand_hist, resolve_contour_based_on_cv_version, keras_predict, \
     get_pred_label, show
-from backend.preprocessing import preprocess
 
-model = load_model('cnn_model_keras2.h5')
+model = load_model('model.h5')
 
 
 class RecognitionService():
@@ -31,11 +28,8 @@ class RecognitionService():
             if len(contours) > 0:
                 contour = max(contours, key=cv2.contourArea)
                 if cv2.contourArea(contour) > 500:
-                    # x1, y1, w1, h1 = cv2.boundingRect(contour)
                     img = img[y:y + h, x:x + w, :]
                     pred_probab, pred_class = keras_predict(model, img)
-                    # plt.imshow(img)
-                    # plt.show()
                     if pred_probab * 100 > 60:
                         text = get_pred_label(pred_class)
                         if text in string.ascii_letters.upper():
