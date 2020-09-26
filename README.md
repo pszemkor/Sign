@@ -1,26 +1,33 @@
 
 # Sign
-## O projekcie
+## Description
+  Sign is an application enabling easy learning of american sign learning alphabet. A user is supposed to present a single letter of the alphabet. The sign is processed by the application and translated into corresponding character from english alphabet.
 
-  Sign jest nowoczesną aplikacją umożliwiającą rozpoznawanie znaków z języka migowego. Użytkownik przy pomocy tej kamery może zaprezentować znak, który zostanie przetworzony przez aplikacje i przetłumaczony na odpowiadający mu symbol z języka angielskiego, który następnie zostanie wyświetlony na ekranie
+## Getting started
+First of all, make sure that you have installed node.js and python interpreter (version 3.6 +).
+0. Go to the project's directory.
+1. pip install -r requirements.txt (install backend's dependencies)
+2. python3 backend_server.py (run Flask server)
+3. cd frontend 
+4. npm install (install frontend's dependencies)
+5. ng serve (run Angular server)
+ 
+## Presentation
+  ### Main view
+ ![image](https://user-images.githubusercontent.com/37248877/94340939-0e9e6f00-0006-11eb-9c5b-fef9cb54ab47.png)
+  ### Statistics
+ ![image](https://user-images.githubusercontent.com/37248877/94341167-a51f6000-0007-11eb-84b8-030c4fe6cf24.png)
+  ### Sessions
+![image](https://user-images.githubusercontent.com/37248877/94341183-c5e7b580-0007-11eb-9992-6735f6a9a815.png)
+
+## Technology stack
+  * Keras
+  * OpenCV 2
+  * Angular
+  * Flask
   
-## Wizja
-Naszym celem jest zmniejszenie wykluczenia społecznego, z którym spotykają się osoby głuche bądź głuchonieme. Jednocześnie wierzymy, że ten projekt przyczyni się do poprawy sytuacji takich osób oraz stanie się inspiracją dla kolejnych twórców oprogramowania, którzy idąc po naszych śladach dokonają rzeczy, o których im się nawet nie śniło, że są możliwe.
-
-## Cechy szczególne
-
- 1. Intuicyjny interfejs i prostota użytkowania
- 2. Efektywność i szybkość działania
- 3. Wysoki poziom bezpieczeństwa i niezawodności
- 4. Aplikacja jest mocno wspierana przez twórców
- 5. Niskie wymagania sprzętowe
-
-
-## Przykładowe zastosowania 
-
- - Jeżeli jesteś osobą głuchą lub głuchoniemą, bądź masz takie osoby w swoim otoczeniu aplikacja Sign stanowi ciekawą alternatywę w komunikacji. Pozwala przełamać barierę komunikacyjną i zachęca do integracji np. podczas spotkania towarzyskiego.
- -  Uczący się języka migowego często natrafiają na swojej drodze do wiedzy wiele niedogodności. Lekcje z
-   wykwalifikowanymi nauczycielami mają często wysokie ceny. Użytkownik może ćwiczyć swoje umiejętności w wolnym czasie przed kamerką. Aplikacja daje feedback w czasie rzeczywistym, czy dany znak został poprawnie rozpoznany.
-
-## Dokumentacja
+## Documentation
+  Currently, the documentation is available only in polish.
  - [Sign dokumentacja](docs-pl/Sign%20-%20dokumentacja.pdf)
+ 
+
