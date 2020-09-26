@@ -11,7 +11,7 @@ from backend.recognize_gesture import create_cam_obj, get_hand_hist, resolve_con
 model = load_model('model.h5')
 
 
-class RecognitionService():
+class RecognitionService:
     def __init__(self):
         super().__init__()
         self.recognized_letters = ['$' for i in range(0, 1)]
