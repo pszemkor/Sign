@@ -23,4 +23,4 @@ Naszym celem jest zmniejszenie wykluczenia społecznego, z którym spotykają si
    wykwalifikowanymi nauczycielami mają często wysokie ceny. Użytkownik może ćwiczyć swoje umiejętności w wolnym czasie przed kamerką. Aplikacja daje feedback w czasie rzeczywistym, czy dany znak został poprawnie rozpoznany.
 
 ## Dokumentacja
- - [Sign dokumentacja](docs/Sign%20-%20dokumentacja.pdf)
+ - [Sign dokumentacja](docs-pl/Sign%20-%20dokumentacja.pdf)

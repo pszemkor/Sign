@@ -1,12 +1,13 @@
 import cv2, pickle
 import numpy as np
-import sqlite3
+import json
+from keras.preprocessing import image
 
 prediction = None
 
 
 def get_image_size():
-    return (50, 50)
+    return (200, 200)
 
 
 image_x, image_y = get_image_size()
@@ -26,20 +27,24 @@ def keras_process_image(img):
     return img
 
 
-def keras_predict(model, image):
-    processed = keras_process_image(image)
-    pred_probab = model.predict(processed)[0]
-    pred_class = list(pred_probab).index(max(pred_probab))
-    return max(pred_probab), pred_class
+def keras_predict(model, img):
+    img = image.smart_resize(img, size=(200, 200))
+    x = image.img_to_array(img)
+    x = np.expand_dims(x, axis=0)
+    images = np.vstack([x])
+    classes = model.predict(images)
+    max_id, max_prob = -1, -1
+    for i in range(len(classes[0])):
+        if classes[0][i] > max_prob:
+            max_id = i
+            max_prob = classes[0][i]
+    return max_prob, max_id
 
 
-def get_pred_text_from_db(pred_class):
-    conn = sqlite3.connect("gesture_db.db")
-    cmd = "SELECT g_name FROM gesture WHERE g_id=" + str(pred_class)
-    cursor = conn.execute(cmd)
-    for row in cursor:
-        return row[0]
-
+def get_pred_label(pred_class):
+    with open("gestures.json") as gestures:
+        class_label = json.load(gestures)
+        return class_label[str(pred_class)]
 
 def split_sentence(text, num_of_words):
     list_words = text.split(" ")
@@ -89,9 +94,6 @@ def create_cam_obj():
     return cam
 
 
-def show(h, img, text, thresh, w, x, y):
+def show(h, img, w, x, y):
     cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 255), 2)
     cv2.imshow("Recognizing gesture", img)
-    cv2.imshow("thresh", thresh)
-
-
